@@ -6,9 +6,7 @@ CERT_DIR="/mnt/certificados" # Diretório onde os novos certificados são armaze
 OLD_CERT_FILE="/path/to/old/certificate.crt" # Caminho para o certificado antigo
 OLD_KEY_FILE="/path/to/old/private.key" # Caminho para a chave privada antiga
 PROJECT_ID="infra-bi-355620" # ID do seu projeto no Google Cloud
-FORWARDING_RULE_NAME="lb-cloud-run-forwarding-rule" # Nome da regra de encaminhamento do Load Balancer
 TARGET_HTTPS_PROXY_NAME="lb-cloud-run-target-proxy" # Nome do proxy HTTPS de destino
-REGION="us-east4" # Região do Load Balancer
 LOG_FILE="/var/log/update_ssl_certificates.log" # Caminho para o arquivo de log
 
 # Função de log
