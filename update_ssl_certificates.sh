@@ -8,6 +8,7 @@ OLD_KEY_FILE="/path/to/old/private.key" # Caminho para a chave privada antiga
 PROJECT_ID="infra-bi-355620" # ID do seu projeto no Google Cloud
 TARGET_HTTPS_PROXY_NAME="lb-cloud-run-target-proxy" # Nome do proxy HTTPS de destino
 LOG_FILE="/var/log/update_ssl_certificates.log" # Caminho para o arquivo de log
+REGION="southamerica-east1"
 
 # Função de log
 log() {
@@ -24,7 +25,7 @@ else
 fi
 
 # Verificar novos certificados
-NEW_CERT_FILE=$(find $CERT_DIR -name "*.cer" -newer $OLD_CERT_FILE)
+NEW_CERT_FILE=$(find $CERT_DIR -name "*.crt" -newer $OLD_CERT_FILE)
 NEW_KEY_FILE=$(find $CERT_DIR -name "*.key" -newer $OLD_KEY_FILE)
 
 if [[ -n $NEW_CERT_FILE && -n $NEW_KEY_FILE ]]; then
@@ -48,7 +49,7 @@ if [[ -n $NEW_CERT_FILE && -n $NEW_KEY_FILE ]]; then
         log "Atualizando o Load Balancer para usar o novo certificado..."
 
         # Verificar se o proxy HTTPS de destino existe
-        PROXY_EXISTS=$(gcloud compute target-https-proxies describe $TARGET_HTTPS_PROXY_NAME --project=$PROJECT_ID --format="value(name)")
+        PROXY_EXISTS=$(gcloud compute target-https-proxies describe $TARGET_HTTPS_PROXY_NAME --project=$PROJECT_ID --region=$REGION --format="value(name)")
 
         if [[ -n $PROXY_EXISTS ]]; then
             # Atualizar o proxy HTTPS de destino para referenciar o novo certificado
