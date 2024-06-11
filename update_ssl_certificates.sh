@@ -15,7 +15,7 @@ sudo mount -t cifs //fs/web/certificados/2024 $CERT_DIR -o username=usuário,pas
 
 # Verificar novos certificados
 # Procurar por novos arquivos .crt no diretório que são mais novos que o arquivo antigo
-NEW_CERT_FILE=$(find $CERT_DIR -name "*.crt" -newer $OLD_CERT_FILE)
+NEW_CERT_FILE=$(find $CERT_DIR -name "*.cer" -newer $OLD_CERT_FILE)
 # Procurar por novos arquivos .key no diretório que são mais novos que o arquivo antigo
 NEW_KEY_FILE=$(find $CERT_DIR -name "*.key" -newer $OLD_KEY_FILE)
 
