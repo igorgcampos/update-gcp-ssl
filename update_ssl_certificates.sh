@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configurações
-CERT_NAME="my-cert-$(date +%Y%m%d%H%M%S)" # Nome único para o certificado baseado na data e hora
+CERT_NAME="ogmaster-internal-$(date +%Y%m%d%H%M%S)" # Nome único para o certificado baseado na data e hora
 CERT_DIR="/mnt/certificados" # Diretório onde os novos certificados são armazenados
 OLD_CERT_FILE="/path/to/old/certificate.crt" # Caminho para o certificado antigo
 OLD_KEY_FILE="/path/to/old/private.key" # Caminho para a chave privada antiga
